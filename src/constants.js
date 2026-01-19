@@ -1,10 +1,6 @@
 export const DRYING_COLORS = [0x8B4513, 0xA16B3F, 0xB8855A, 0xff9800];
 
-export const WORLD_SIZE = {
-  X: 50,
-  Y: 25,
-  Z: 50
-};
+export const WORLD_SIZE = { X: 50, Y: 25, Z: 50};
 
 export const PLAYER_HEIGHT = 3.2;
 export const START_POS = { x: -20, y: PLAYER_HEIGHT, z: 20 };
