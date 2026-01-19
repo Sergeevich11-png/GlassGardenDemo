@@ -1,5 +1,6 @@
 import { DRYING_COLORS } from './constants.js';
 import { generateCloneId } from './utils.js';
+import { getState } from './gameState.js';
 
 export function saveGameState(scene, camera, spotLight, bulb, wateringCan, originalCube, originalSeed, clones) {
   const { coins, heldObject, cubeUIVisible, wateringCanUIVisible, seedUIVisible, isLampOn } = getState();
