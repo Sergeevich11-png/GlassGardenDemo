@@ -47,8 +47,7 @@ function initGame(loadState = null) {
       camera,
       objects.spotLight,
       objects.bulb,
-      objects.wateringCan,
-      objects.originalCube,
+      objects.wateringCan,      objects.originalCube,
       objects.originalSeed,
       getState().clones
     );
@@ -97,8 +96,7 @@ function handleInteraction(action, target) {
       currentScene.objects.spotLight.color.set(opt.light);
       currentScene.objects.bulb.material.color.set(opt.hex);
     });
-  } else if (action === 'pickup') {
-    setHeldObject(target);
+  } else if (action === 'pickup') {    setHeldObject(target);
     if (target === currentScene.objects.wateringCan) {
       showWateringCanUI(true);
     } else if (target.userData.type === 'cube') {
@@ -121,8 +119,8 @@ function dropHeldObject() {
               held.userData.type === 'cube' ? 1.5 / 2 : 0.5;
   dropPos.x = Math.round(dropPos.x);
   dropPos.z = Math.round(dropPos.z);
-  const halfX = WORLD_SIZE_X / 2 - WALL_MARGIN;
-  const halfZ = WORLD_SIZE_Z / 2 - WALL_MARGIN;
+  const halfX = WORLD_SIZE.X / 2 - WALL_MARGIN;
+  const halfZ = WORLD_SIZE.Z / 2 - WALL_MARGIN;
   dropPos.x = Math.max(-halfX, Math.min(halfX, dropPos.x));
   dropPos.z = Math.max(-halfZ, Math.min(halfZ, dropPos.z));
 
@@ -147,8 +145,7 @@ function sellHeldObject(held) {
 
 // Обновление игрока
 function updatePlayer(delta) {
-  let moveForward = 0, moveRight = 0;
-  if (!isMobile) {
+  let moveForward = 0, moveRight = 0;  if (!isMobile) {
     if (keys.w) moveForward += 1;
     if (keys.s) moveForward -= 1;
     if (keys.a) moveRight -= 1;
@@ -171,8 +168,8 @@ function updatePlayer(delta) {
   }
 
   currentScene.camera.position.y = PLAYER_HEIGHT;
-  const halfX = WORLD_SIZE_X / 2 - WALL_MARGIN;
-  const halfZ = WORLD_SIZE_Z / 2 - WALL_MARGIN;
+  const halfX = WORLD_SIZE.X / 2 - WALL_MARGIN;
+  const halfZ = WORLD_SIZE.Z / 2 - WALL_MARGIN;
   currentScene.camera.position.x = Math.max(-halfX, Math.min(halfX, currentScene.camera.position.x));
   currentScene.camera.position.z = Math.max(-halfZ, Math.min(halfZ, currentScene.camera.position.z));
   currentScene.camera.rotation.order = 'YXZ';
@@ -197,8 +194,7 @@ let lastTime = 0;
 function animate(time) {
   if (!isGameActive || !currentScene) return requestAnimationFrame(animate);
   const delta = time - lastTime;
-  lastTime = time;
-  updatePlayer(delta);
+  lastTime = time;  updatePlayer(delta);
   const pos = currentScene.camera.position;
   const degX = (lookX * 180 / Math.PI).toFixed(1);
   const degY = (lookY * 180 / Math.PI).toFixed(1);
@@ -247,8 +243,7 @@ saveAndExitBtn.onclick = () => {
       currentScene.objects.wateringCan,
       currentScene.objects.originalCube,
       currentScene.objects.originalSeed,
-      getState().clones
-    );
+      getState().clones    );
     localStorage.setItem('savedGameState', JSON.stringify(state));
     continueBtn.style.display = 'block';
   }
@@ -267,7 +262,7 @@ function cleanup() {
   pauseBtn.style.display = 'none';
   shopBtn.style.display = 'none';
   isGameActive = false;
-  document.querySelector('canvas')?.remove();
+  // УДАЛЕНО: document.querySelector('canvas')?.remove();
   gameInitialized = false;
   document.querySelectorAll('#cubeUI, #wateringCanUI, #seedUI, #colorPickerUI, #confirmBox, #shopMenu')
     .forEach(el => el.style.display = 'none');
