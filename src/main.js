@@ -5,7 +5,7 @@ import { updateCoinDisplay, setupUIVisibility, showConfirm, buildColorPickerUI }
 import { renderShopBuy, renderShopSell } from './shop.js';
 import { saveGameState, loadGameState } from './saveLoad.js';
 import {  getState, setCoins, setHeldObject, addClone, removeClone, showCubeUI, showWateringCanUI, showSeedUI} from './gameState.js';
-import { WORLD_SIZE_X, WORLD_SIZE_Y, WORLD_SIZE_Z, PLAYER_HEIGHT, WALL_MARGIN, BASE_MOVE_SPEED, LOOK_SENSITIVITY, HOLD_THRESHOLD_MS } from './constants.js';
+import { WORLD_SIZE, PLAYER_HEIGHT, WALL_MARGIN, BASE_MOVE_SPEED, LOOK_SENSITIVITY, HOLD_THRESHOLD_MS } from './constants.js';
 
 // DOM элементы
 const mainMenu = document.getElementById('mainMenu');
