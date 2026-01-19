@@ -1,6 +1,6 @@
 import { DRYING_COLORS } from './constants.js';
-import { generateCloneId } from './utils.js';
-import { getState } from './gameState.js';
+//  УДАЛИЛ , ЛИШНЕЕ import { generateCloneId } from './utils.js';
+import { getState } from './gameState.js';  // ← ДОБАВИТЬ!
 
 export function saveGameState(scene, camera, spotLight, bulb, wateringCan, originalCube, originalSeed, clones) {
   const { coins, heldObject, cubeUIVisible, wateringCanUIVisible, seedUIVisible, isLampOn } = getState();
@@ -86,7 +86,7 @@ export function loadGameState(gameState, scene, camera, spotLight, bulb, waterin
             clone.userData.dryStage = stage;
             clone.material.color.set(DRYING_COLORS[stage]);
             if (stage < DRYING_COLORS.length - 1) {
-              clone.userData.dryTimer = setTimeout(() => {
+              clone.userData.wetTimer = setTimeout(() => {
                 stage++; advance();
               }, 10000);
             } else {
