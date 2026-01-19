@@ -1,4 +1,6 @@
 import { getState, setCoins, showCubeUI, showWateringCanUI, showSeedUI } from './gameState.js';
+import { COLOR_OPTIONS } from './constants.js';
+
 
 const coinCountEl = document.getElementById('coinCount');
 const cubeUI = document.getElementById('cubeUI');
@@ -39,7 +41,6 @@ export function showConfirm(text, yesText, noText, onYes, onNo) {
 
 export function buildColorPickerUI(onSelect) {
   colorPickerUI.innerHTML = '<p>Выберите цвет</p>';
-  import { COLOR_OPTIONS } from './constants.js';
   COLOR_OPTIONS.forEach(opt => {
     const btn = document.createElement('div');
     btn.style.backgroundColor = '#' + opt.hex.toString(16).padStart(6, '0');
